@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang = "pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <!-- CUSTOM STYLESHEET -->
+        <link rel="stylesheet" href="{%static 'css/style.css' %}">
+        <!-- FONT AWESOME --> 
+        <link rel = "stylesheet" href = "{% static 'css/fontawesome.css' %}">
+        <!-- BOOTSTRAP CORE CSS -->
+        <link rel = "stylesheet" href = "{% static 'css/bootstrap.css' %}">
+    </head>
+    <body>
+        <!-- CONTENT -->
+        <main>
+           {% block content %}
+           {% endblock %} 
+        </main>
+
+        <!-- JQUERY -->
+        <script src = "{% static 'js/jquery.js' %}"></script>
+        <!-- BOOTSTRAP TOOLTIPS -->
+        <script src = "{% static 'js/popper.js' %}"></script>
+        <!-- BOOTSTRAP JS -->
+        <script src = "{% static 'js/bootstrap.js' %}"></script>
+
+        {% block script %}
+        {% endblock %}
+    </body>
+</html>
