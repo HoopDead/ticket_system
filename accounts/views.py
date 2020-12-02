@@ -13,8 +13,7 @@ def login_page(request):
 
         if user is not None:
             login(request, user)
-            print("Logged in!")
-            #TODO: Add redirect to index page for permitted uesr
+            #TODO: Add redirect to index page for logged in uesr
             return render(request, 'index.html')
         else:
             messages.error(request, 'User name or password is incorrect!')
@@ -22,5 +21,20 @@ def login_page(request):
 
 def register_page(request):
     if request.method == "POST":
-        form = SignUpForm(request.POST)
-    return render(request, 'register.html', {'form': form})
+        sign_up_form = SignUpForm(request.POST)
+
+        if sign_up_form.is_valid():
+            sign_up_form.save()
+            username = sign_up_form.cleaned_data.get('username')
+            raw_password = sign_up_form.cleaned_data.get('password1')
+            user = authenticate(username = username, password = raw_password)
+            login(request, user)
+            #TODO: Add redirect to index page for logged in user
+            return render(request, 'index.html')
+        else:
+            print(sign_up_form.errors)
+
+    else:
+        sign_up_form = SignUpForm(request.POST)
+
+    return render(request, 'register.html', {'form': sign_up_form})
