@@ -33,3 +33,5 @@ class LogInTest(TestCase):
         client = Client()
         logged_in = client.login(**self.credentials)
         self.assertTrue(logged_in)
+
+#TODO: Test for register
