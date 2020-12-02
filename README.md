@@ -3,5 +3,5 @@ Ticketing system made in Django
 
 Login & Password for admin account:
 
-L: admin
-P: root321
+L: admin1
+P: admin321
