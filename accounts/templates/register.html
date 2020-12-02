@@ -6,22 +6,36 @@
 
 {% block content %}
    <div class = "d-flex align-items-center min-vh-100">
-        <div class = "row mx-auto text-center">        
-            <div class = "col-sm-12">
+        <div class = "row mx-auto">        
+            <div class = "col-sm-12 text-center">
                 <h2>Ticket System | IT</h2>
                 <hr>
             </div>
             <div class = "col-sm-12">
                 <form method = "POST" action = "">
                 {% csrf_token %}
-                    <div class="form-group my-3">
-                        <input name = "username" type="text" class="form-control" placeholder="Enter username">
+                    <!-- Username input -->
+                    <div class="form-group my-2">
+                        <label for = "username">Enter username</label>
+                        {{ form.username }}
                     </div>
-                    <div class = "form-group my-3">
-                        <input name = "password" type = "password" class = "form-control" placeholder = "Enter password">
+                    <!-- Email input -->
+                    <div class = "form-group my-2">
+                        <label for = "username" class = "text-left">Enter email</label>
+                        {{ form.email }}
                     </div>
-                    <div>
-                        <input name = "password_repeat" type = "password" class = "form-control" placeholder = "Repeat password">
+                    <!-- Password input -->
+                    <div class = "form-group my-2">
+                        <label for = "username" class = "text-left">Enter password</label>
+                        {{ form.password }}
+                    </div>
+                    <!-- Repeat password input -->
+                    <div class = "form-group my-2">
+                        <label for = "username" class = "text-left">Please, repeat the password</label>
+                        {{ form.password_repeat }}
+                    </div>
+                    <div class = "text-center">
+                        <button type = "submit" class = "btn btn-primary my-2">Sign up</button>
                     </div>
                 </form>
             </div>

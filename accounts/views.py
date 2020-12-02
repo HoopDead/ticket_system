@@ -1,7 +1,7 @@
 from django.shortcuts import render
-
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from accounts.forms import SignUpForm
 
 # Create your views here.
 def login_page(request):
@@ -21,4 +21,6 @@ def login_page(request):
     return render(request, 'login.html')
 
 def register_page(request):
-    return render(request, 'register.html')
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+    return render(request, 'register.html', {'form': form})
