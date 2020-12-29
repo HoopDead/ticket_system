@@ -34,4 +34,9 @@ class LogInTest(TestCase):
         logged_in = client.login(**self.credentials)
         self.assertTrue(logged_in)
 
+class SignUpTest(TestCase):
+
+    def test_registration_post(reverse())
+
+
 #TODO: Test for register

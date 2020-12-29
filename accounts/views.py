@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from accounts.forms import SignUpForm
+import json
 
-# Create your views here.
 def login_page(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -15,8 +15,10 @@ def login_page(request):
             login(request, user)
             #TODO: Add redirect to index page for logged in uesr
             return render(request, 'index.html')
+
         else:
-            messages.error(request, 'User name or password is incorrect!')
+            messages.error(request, 'Username or password is incorrect!')
+
     return render(request, 'login.html')
 
 def register_page(request):
@@ -32,8 +34,10 @@ def register_page(request):
             #TODO: Add redirect to index page for logged in user
             return render(request, 'index.html')
         else:
-            print(sign_up_form.errors)
-
+            y = json.loads(sign_up_form.errors.as_json())
+            for msg in y:
+                messages.error(request, y[msg][0]['message'])
+                
     else:
         sign_up_form = SignUpForm(request.POST)
 
