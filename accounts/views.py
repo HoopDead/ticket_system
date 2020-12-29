@@ -34,9 +34,9 @@ def register_page(request):
             #TODO: Add redirect to index page for logged in user
             return render(request, 'index.html')
         else:
-            y = json.loads(sign_up_form.errors.as_json())
-            for msg in y:
-                messages.error(request, y[msg][0]['message'])
+            sign_up_form_errors = json.loads(sign_up_form.errors.as_json())
+            for msg in sign_up_form_errors:
+                messages.error(request, sign_up_form_errors[msg][0]['message'])
                 
     else:
         sign_up_form = SignUpForm(request.POST)

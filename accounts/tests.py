@@ -2,6 +2,7 @@ import pytest
 from django.urls import reverse, resolve
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
+from .forms import SignUpForm
 
 
 # Create your tests here.
@@ -36,7 +37,16 @@ class LogInTest(TestCase):
 
 class SignUpTest(TestCase):
 
-    def test_registration_post(reverse())
+    def test_sign_up_success(self):
 
+        data = {
+            'username': 'testinguser',
+            'email': 'test@example.com',
+            'password1': 'Polska321@',
+            'password2': 'Polska321@'
+        }
 
-#TODO: Test for register
+        form = SignUpForm(data)
+
+        self.assertTrue(form.is_valid())
+        self.assertEqual(form.non_field_errors(), [])
