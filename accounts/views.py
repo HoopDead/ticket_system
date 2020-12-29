@@ -13,7 +13,6 @@ def login_page(request):
 
         if user is not None:
             login(request, user)
-            #TODO: Add redirect to index page for logged in uesr
             return render(request, 'index.html')
 
         else:
@@ -31,7 +30,6 @@ def register_page(request):
             raw_password = sign_up_form.cleaned_data.get('password1')
             user = authenticate(username = username, password = raw_password)
             login(request, user)
-            #TODO: Add redirect to index page for logged in user
             return render(request, 'index.html')
         else:
             sign_up_form_errors = json.loads(sign_up_form.errors.as_json())
