@@ -37,6 +37,7 @@ class LogInTest(TestCase):
 
 class SignUpTest(TestCase):
 
+    """ Test for everything alright """
     def test_sign_up_success(self):
 
         data = {
@@ -50,3 +51,18 @@ class SignUpTest(TestCase):
 
         self.assertTrue(form.is_valid())
         self.assertEqual(form.non_field_errors(), [])
+
+
+    """ Test for password too similar to username """
+    def test_sign_up_fail(self):
+
+        data = {
+            'username': 'test',
+            'email': 'test@example.com',
+            'password1': 'test1',
+            'password2': 'test2'
+        }
+
+        form = SignUpForm(data)
+
+        self.assertFalse(form.is_valid())
