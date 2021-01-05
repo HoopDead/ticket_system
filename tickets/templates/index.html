@@ -1,10 +1,42 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>Main page</p>
-</body>
-</html>
+{% extends 'block.html' %}
+
+{% load static %}
+
+{% block title %} Tickets | Index {% endblock  %}
+
+{% block content %}
+    <div class = "container min-vh-100">
+        <div class = "row">
+            <div class = "col-sm-12 text-left">
+                <div class="alert alert-warning my-3" role="alert">
+                    <b>Ticketing System is still in development</b><br>
+                    Please be aware of all bugs that may happen. If you experience any of that please report it here: <a href = "https://github.com/HoopDead/ticket_system/issues">Report bug</a>
+                </div>            
+            </div>
+            <div class = "col-sm-4 mx-auto my-3 text-center">
+                <h2>Ticket System | IT</h2>
+                <hr>
+                <p class = "lead">How can we help you today {{ user }}?</p>
+            </div>
+        </div>
+        <div class = "row align-items-center">
+            <div class = "col-md-4 col-sm-12 text-center">
+                <img src = "/media/clock.png">
+                <p class = "lead my-3">IT takes us 12 hours to respond.</p>
+            </div>
+            <div class = "col-md-4 col-sm-12 text-center">
+                <img src = "/media/certificate.png">
+                <p class = "lead my-3">Trusted by over 150 companies.</p>
+            </div>
+            <div class = "col-md-4 col-sm-12 text-center">
+                <img src = "/media/support.png">
+                <p class = "lead my-3">Professional help is online 24/7.</p>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col-sm-8 mx-auto my-3 text-center">
+                <h4>Choose category to find support you need</h4>
+            </div>
+        </div>
+    </div>
+{% endblock  %}
